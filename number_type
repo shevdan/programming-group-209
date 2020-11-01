@@ -1,0 +1,77 @@
+'''
+'''
+# IMPORTANT: do not forget about thoughtful documentation
+#
+#
+# TODO: checking for prime and ulam numbers
+
+
+
+def user_number_type(number: int) -> str:
+    ''' Just in case we will need to determine what
+    type of number is inputed.
+    '''
+
+    # TODO: what if a number can be both prime and lucky, for instance?
+    if lucky_type(number):
+        return 'lucky_number'
+    if ulam_number(number):
+        return 'ulam_number'
+    if prime_number(number):
+        return 'prime_number'
+
+    return 'bad_number'
+
+def lucky_type(number: int) -> bool:
+    '''
+
+    '''
+
+    if number in sieve_flavius(number + 1):
+        return True
+
+def sieve_flavius(number_of_elm: int) ->  list:
+    '''
+    Builds a list of lucky_numbers.
+
+    Takes a positive integer.
+    If the argument is not a positive int, returns None
+    If the argument is not a number, returns None.
+
+    TODO: doctests
+    '''
+
+    try:
+        # creates a list of odd numbers
+        lucky_number_list = [num for num in range(number_of_elm) if num % 2 != 0]
+    except TypeError:
+        return None
+
+    i = 1
+    start_lenght = len(lucky_number_list)
+    final_lenght = 0
+    # if lenght of the list doesn't change, the loop stops
+    # (if there are no numbers crossed out)
+    while start_lenght != final_lenght:
+        start_lenght = len(lucky_number_list)
+        number = lucky_number_list[i]
+        # deletes each 3/7/... elm of the list
+        del lucky_number_list[(number - 1)::number]
+        final_lenght = len(lucky_number_list)
+        i += 1
+
+    return lucky_number_list
+
+def prime_number(number: int) -> str:
+    '''
+
+    '''
+
+    pass
+
+def ulam_number(number: int) -> str:
+    '''
+
+    '''
+
+    pass
