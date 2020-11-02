@@ -3,7 +3,8 @@
 # IMPORTANT: do not forget about thoughtful documentation
 #
 #
-# TODO: checking for prime and ulam numbers
+# TODO: documentation, everyone should look through the code,
+# and propose some improvements.
 
 
 
@@ -50,6 +51,12 @@ def sieve_flavius(number_of_elm: int) ->  list:
 
     TODO: doctests
     '''
+
+    # for these numbers there gonna be IndexError later
+    if 0 < number_of_elm < 3:
+        return [1]
+    if number_of_elm == 3:
+        return [1, 3]
 
     try:
         # creates a list of odd numbers
