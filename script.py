@@ -9,17 +9,15 @@ def main():
 
 
 if __name__ == '__main__':
+    # gonna be changed for introduction func.
     print('blabla (Introduction)')
-    # mode = input('What play mode do you want to try?')
-    # TODO: asks the user what level of difficilty (range_of_numbers)
-    # TODO: decide_mode()
-    # TODO: game_mode: limited number of errors, infinite mode
+
     correct_nums = []
     num_of_lives = 3
+    num_of_iterations = 0
     while True:
-        # level_of_difficulty = input('What level of dif do u want to play? ')
-        # range_of_nums = lev_of_dif(level_of_difficulty)
-        grid = generate_grid.generate_grid(0, 20)
+        range_of_nums = generate_grid.level_of_dif(num_of_iterations)
+        grid = generate_grid.generate_grid(range_of_nums)
         number_types = ['ulam', 'prime', 'lucky']
         print(grid)
         type_of_num = choice(number_types)
@@ -29,6 +27,7 @@ if __name__ == '__main__':
         except ValueError:
             break
         user_nums = []
+        num_of_iterations += 1
         if num_of_user:
             if check_type(num_of_user, type_of_num):
                 print('yeah')
@@ -43,4 +42,3 @@ if __name__ == '__main__':
             break
 
     print(correct_nums)
-    # results()
