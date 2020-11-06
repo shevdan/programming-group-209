@@ -1,3 +1,5 @@
+import random
+
 '''
 '''
 # IMPORTANT: do not forget about thoughtful documentation
@@ -8,7 +10,7 @@
 
 
 
-def user_number_type(number: int) -> str:
+def user_number_type(number: int, number_type: str) -> bool:
     ''' Just in case we will need to determine what
     type of number is inputed.
     '''
@@ -18,19 +20,16 @@ def user_number_type(number: int) -> str:
     result = 'Number is '
 
 
-    num_charact = ''
-    if lucky_type(number):
-        num_charact += 'lucky_number'
-    if ulam_number(number):
-        num_charact +=  'ulam_number'
-    if prime_number(number):
-        num_charact +=  'prime_number'
-    if num_charact != '':
-        result += ' and '.join(num_charact)
-        return result
-    result += 'bad number'
-
-    return result
+    if number_type in ['lucky', 'Lucky']:
+        if lucky_type(number):
+            return True
+    if number_type in ['prime', 'Prime']:
+        if prime_number(number):
+            return True
+    if number_type in ['ulam', 'Ulam']:
+        if ulam_number:
+            return True
+    return False
 
 def lucky_type(number: int) -> bool:
     '''
@@ -41,43 +40,31 @@ def lucky_type(number: int) -> bool:
         return True
     return False
 
-def sieve_flavius(number_of_elm: int) ->  list:
+'''
+This program generates a list of Flavius sieve numbers
+'''
+def sieve_flavius(number: int) -> list:
     '''
-    Builds a list of lucky_numbers.
-
-    Takes a positive integer.
-    If the argument is not a positive int, returns None
-    If the argument is not a number, returns None.
-
-    TODO: doctests
+    Function generates list similar to Erathosphen sieve
+    for building lucky numbers sequence
+    >>> sieve_flavius(100)
+    [1, 3, 7, 9, 13, 15, 21, 25, 31, 33, 37, 43, 49, 51, 63, 67, 69, 73, 75, 79, 87, 93, 99]
+    >>> sieve_flavius(10)
+    [1, 3, 7, 9]
+    >>> sieve_flavius(0)
+    []
     '''
-
-    # for these numbers there gonna be IndexError later
-    if 0 < number_of_elm < 3:
-        return [1]
-    if number_of_elm == 3:
-        return [1, 3]
-
-    try:
-        # creates a list of odd numbers
-        lucky_number_list = [num for num in range(number_of_elm) if num % 2 != 0]
-    except TypeError:
-        return None
-
-    i = 1
-    start_lenght = len(lucky_number_list)
-    final_lenght = 0
-    # if lenght of the list doesn't change, the loop stops
-    # (if there are no numbers crossed out)
-    while start_lenght != final_lenght:
-        start_lenght = len(lucky_number_list)
-        number = lucky_number_list[i]
-        # deletes each 3/7/... elm of the list
-        del lucky_number_list[(number - 1)::number]
-        final_lenght = len(lucky_number_list)
-        i += 1
-
-    return lucky_number_list
+    flavius_list = list(range(1, number + 1, 2))
+    id_list = 1
+    while id_list < len(flavius_list):
+        temporary_list = []
+        num = flavius_list[id_list]
+        for index, item in enumerate(flavius_list):
+            if (index + 1) % num != 0:
+                temporary_list.append(item)
+        flavius_list = temporary_list
+        id_list += 1
+    return flavius_list
 
 def prime_number(number: int) -> str:
     '''
@@ -172,3 +159,4 @@ def numbers_Ulam(number: int) -> list:
                 ulam.append(ulam_num)
             ulam_num += 1
     return ulam
+
