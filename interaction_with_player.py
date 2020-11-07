@@ -84,3 +84,11 @@ def mistake_output(num_of_lives):
         print('You lost and your future won\'t be good........')
     elif num_of_lives[0] == 1:
         print(f'U have {num_of_lives[0]} attempt left')
+        
+def victory_output(num_of_iterations):
+    """
+    Prints victory message when player passed all 9 tests and returns False to stop the game
+    """
+    if num_of_iterations==9:
+        print("Congratulations, you passed the test!")
+    return False
