@@ -14,10 +14,8 @@ def start_intro():
     print("-" * 123)
     time.sleep(1)
     print("""You are above to pass a test that decides their fate.
-
 The essence of this test is to select people to the highest class of society, \
 where they will have unlimited opportunities.
-
 Those who fail this test have no chance to change \
 its result and are doomed to a mundane and gray life.""")
     time.sleep(1)
@@ -54,7 +52,7 @@ def form_num(grid: list) -> str:
     Randomly chooses the type of number user will look for
     '''
 
-    number_types = ['ulam', 'prime', 'happy']
+    number_types = ['ulam', 'prime', 'lucky']
     num_type = random.choice(number_types)
     print(f'Please, choose the {num_type} number from the following:\n{grid}')
     return num_type
@@ -81,7 +79,7 @@ def mistake_output(num_of_lives):
     if num_of_lives[0] > 1:
         print(f'U have {num_of_lives[0]} attempts left ')
     elif num_of_lives[0] == 0:
-        time.sleep(2)
+        time.sleep(1)
         print('-'*123)
         print('You lost and your future won\'t be good........')
     elif num_of_lives[0] == 1:
