@@ -3,11 +3,13 @@ module that contains functions to interact with user
 """ 
 import random
 
+
 def start_intro():
     '''
     Prints out the intro of the game.
     '''
     print("Today u r having very important test , Let's start.")
+
 
 def user_num():
     user_number = -1
@@ -18,8 +20,8 @@ def user_num():
                 print("Enter positive number:")
         except ValueError:
             print("This number is not int type, Please input correct number")
-        
     return user_number
+
 
 def form_num(grid):
     number_types = ['ulam', 'prime', 'happy']
@@ -33,7 +35,6 @@ def congrats_output():
     out = random.choice(dif_congrats)
     print(out)
 
-    
     
 def mistake_output(num_of_lives):
     dif_mistakes = ['Not right!','Wrong!','Incorrect!']

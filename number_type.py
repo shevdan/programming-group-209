@@ -1,7 +1,7 @@
 import random
 
-'''
-'''
+"""
+"""
 # IMPORTANT: do not forget about thoughtful documentation
 #
 #
@@ -9,16 +9,15 @@ import random
 # and propose some improvements.
 
 
-
 def user_number_type(number: int, number_type: str) -> bool:
-    ''' Just in case we will need to determine what
+    """
+    Just in case we will need to determine what
     type of number is inputed.
-    '''
+    """
 
     # TODO: what if a number can be both prime and lucky, for instance?
 
     result = 'Number is '
-
 
     if number_type in ['lucky', 'Lucky']:
         if lucky_type(number):
@@ -31,20 +30,28 @@ def user_number_type(number: int, number_type: str) -> bool:
             return True
     return False
 
+
 def lucky_type(number: int) -> bool:
-    '''
-
-    '''
-
+    """
+    (int) -> bool
+    Determines whether the number is lucky
+    >>> lucky_type(13)
+    True
+    >>> lucky_type(223)
+    True
+    >>> lucky_type(548)
+    False
+    """
     if number in sieve_flavius(number + 1):
         return True
     return False
 
-'''
+
+"""
 This program generates a list of Flavius sieve numbers
-'''
+"""
 def sieve_flavius(number: int) -> list:
-    '''
+    """
     Function generates list similar to Erathosphen sieve
     for building lucky numbers sequence
     >>> sieve_flavius(100)
@@ -53,7 +60,7 @@ def sieve_flavius(number: int) -> list:
     [1, 3, 7, 9]
     >>> sieve_flavius(0)
     []
-    '''
+    """
     flavius_list = list(range(1, number + 1, 2))
     id_list = 1
     while id_list < len(flavius_list):
@@ -66,16 +73,19 @@ def sieve_flavius(number: int) -> list:
         id_list += 1
     return flavius_list
 
-def prime_number(number: int) -> str:
-    '''
 
-    '''
+def prime_number(number: int) -> str:
+    """
+    (int) -> bool
+    Determines whether the number belongs to the sieve of Eratosthenes
+    """
     if number in sieve_eratosthene(number + 1):
         return True
     return False
 
+
 def sieve_eratosthene(number: int) -> list:
-    '''
+    """
     This function returns the list of prime numbers in range n
 
     Takes a posititve integer
@@ -91,11 +101,11 @@ def sieve_eratosthene(number: int) -> list:
     []
     >>> sieve_eratosthene('abc')
     []
-    '''
+    """
 
-    #Create a list containing all the numbers.
-    #Initialize them as True. Later, prime[i] will be False
-    #if it is composite and True if it is prime
+    # Create a list containing all the numbers.
+    # Initialize them as True. Later, prime[i] will be False
+    # if it is composite and True if it is prime
     if not isinstance(number, int) or number < 1:
         return []
 
@@ -103,14 +113,14 @@ def sieve_eratosthene(number: int) -> list:
     prime[0], prime[1] = False, False
     curr_num = 2
 
-    #Start loop beginning from 2, as 0 and 1 are not prime
-    #The loop goes up to sqrt(number) to decrease the number 
-    #of iterations and improve the time of work
-    while(curr_num * curr_num < number):
+    # Start loop beginning from 2, as 0 and 1 are not prime
+    # The loop goes up to sqrt(number) to decrease the number
+    # of iterations and improve the time of work
+    while curr_num * curr_num < number:
         if prime[curr_num]:
-            #if current number is prime, update all the
-            #following numbers that are multiplied by curr_num
-            #as composite, beginning from curr_numˆ2
+            # if current number is prime, update all the
+            # following numbers that are multiplied by curr_num
+            # as composite, beginning from curr_numˆ2
             for i in range(curr_num * curr_num, number + 1, curr_num):
                 prime[i] = False
         curr_num += 1
@@ -120,9 +130,20 @@ def sieve_eratosthene(number: int) -> list:
             prime_list.append(item[0])
     return prime_list
 
+
 def ulam_number(number: int) -> bool:
-    '''
-    '''
+    """
+    (int) -> bool
+    Determines whether the number belongs the ulam's series
+    >>> ulam_number(10)
+    False
+    >>> ulam_number(6)
+    True
+    >>> ulam_number(1)
+    True
+    >>> ulam_number(18)
+    True
+    """
     if number in numbers_Ulam(number + 1):
         return True
     return False
