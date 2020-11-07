@@ -13,11 +13,14 @@ def one_iteration(num_of_lives, num_of_iterations):
     '''
     Implements one iteration of game (one guess of the user)
     '''
-    interaction_with_player.victory_output() 
+    if num_of_iterations[0] == 9:
+        interaction_with_player.victory_output(num_of_iterations[0])
+        return False
 
     range_of_nums = generate_grid.level_of_dif(num_of_iterations[0])
-    grid = generate_grid.generate_grid(range_of_nums)
-    type_of_num = interaction_with_player.form_num(grid)
+    type_of_num = interaction_with_player.form_num()
+    grid = generate_grid.generate_grid(range_of_nums, type_of_num)
+    print(grid)
     num_of_user = interaction_with_player.user_num()
 
     if num_of_user:
