@@ -13,6 +13,7 @@ def one_iteration(num_of_lives, num_of_iterations):
     '''
     Implements one iteration of game (one guess of the user)
     '''
+    interaction_with_player.victory_output() 
 
     range_of_nums = generate_grid.level_of_dif(num_of_iterations[0])
     grid = generate_grid.generate_grid(range_of_nums)
