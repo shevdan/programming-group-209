@@ -39,4 +39,7 @@ def mistake_output(num_of_lives):
     dif_mistakes = ['Not right!','Wrong!','Incorrect!']
     out = random.choice(dif_mistakes)
     print(out)
-    print(f'U have {num_of_lives} attempts left ')
+    if num_of_lives != 1:
+        print(f'U have {num_of_lives} attempts left ')
+    else:
+        print(f'U have {num_of_lives} attempt left ')
