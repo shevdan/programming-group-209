@@ -1,4 +1,4 @@
-from random import sample, randint
+from random import sample, randint, shuffle
 from number_type import user_number_type as check
 
 def level_of_dif(num_of_iterations):
@@ -27,6 +27,7 @@ def generate_grid(range_of_nums, num_type) -> list:
 
     grid = sample([i for i in range(range_of_nums[0], range_of_nums[1])], 9)
     grid.append(right_num)
+    shuffle(grid)
 
 
     return grid
