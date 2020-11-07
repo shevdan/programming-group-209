@@ -13,7 +13,7 @@ def start_intro():
 
     print("-" * 123)
     time.sleep(1)
-    print("""You are above to pass a test that decides their fate.
+    print("""You are about to pass a test that decides their fate.
 The essence of this test is to select people to the highest class of society, \
 where they will have unlimited opportunities.
 Those who fail this test have no chance to change \
@@ -47,16 +47,15 @@ def user_num() -> int:
 
     return user_number
 
-def form_num(grid: list) -> str:
+def form_num() -> str:
     '''
     Randomly chooses the type of number user will look for
     '''
 
     number_types = ['ulam', 'prime', 'lucky']
     num_type = random.choice(number_types)
-    print(f'Please, choose the {num_type} number from the following:\n{grid}')
+    print(f'Please, choose the {num_type} number from the following:')
     return num_type
-
 
 def congrats_output():
     '''
@@ -89,6 +88,4 @@ def victory_output(num_of_iterations):
     """
     Prints victory message when player passed all 9 tests and returns False to stop the game
     """
-    if num_of_iterations==9:
-        print("Congratulations, you passed the test!")
-    return False
+    print("Congratulations, you passed the test! Now your life will be filled with happiness")
