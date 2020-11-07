@@ -28,10 +28,10 @@ def one_iteration(num_of_lives, num_of_iterations):
             interaction_with_player.mistake_output(num_of_lives)
             # breaks the execution of the function, if the number of lives == 0
             if num_of_lives[0] <= 0:
-                return None
+                return False
         return True
     
-    return None
+    return False
 
 
 if __name__ == '__main__':
