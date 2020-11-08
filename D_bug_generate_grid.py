@@ -11,12 +11,13 @@ type and 9 more random numbers.
 
 from random import sample, randint, shuffle
 from typing import List
-from number_type import user_number_type as check
+from D_bug_number_type import user_number_type as check
 
 def level_of_dif(num_of_iterations):
     '''
     This functions determines the range
     from which the numbers will be taken.
+
     0 - 3 iterations : easy level of game: range of numbers [0, 20]
     4 - 6 iterations : medium level of game: range of numbers [20, 50]
     7 - 9 iterations : hard level of game: range of numbers [50, 100]
