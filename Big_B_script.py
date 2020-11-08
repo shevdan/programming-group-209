@@ -23,7 +23,11 @@ def one_iteration(num_of_lives: int, num_of_iterations: int) -> bool:
     type_of_num = interaction_with_player.form_num()
     grid = generate_grid.generate_grid(range_of_nums, type_of_num)
     print(grid)
-    num_of_user = interaction_with_player.user_num()
+    try:
+        num_of_user = interaction_with_player.user_num()
+    except EOFError:
+        print('You lost... You were so close...')
+        return None
 
     if num_of_user:
         if check_type(num_of_user, type_of_num) and num_of_user in grid:
