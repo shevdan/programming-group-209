@@ -1,4 +1,4 @@
-'''
+"""
 This module contains functions that implements generation of the game grid.
 
 Function level_of_dif determines the range (which is the representation
@@ -7,21 +7,22 @@ from which the numbers will be taken.
 
 Function generate_grid generates grid, with a one specific number of needed
 type and 9 more random numbers.
-'''
+"""
 
 from random import sample, randint, shuffle
 from typing import List
 from D_bug_number_type import user_number_type as check
 
+
 def level_of_dif(num_of_iterations):
-    '''
+    """
     This functions determines the range
     from which the numbers will be taken.
 
     0 - 3 iterations : easy level of game: range of numbers [0, 20]
     4 - 6 iterations : medium level of game: range of numbers [20, 50]
     7 - 9 iterations : hard level of game: range of numbers [50, 100]
-    '''
+    """
 
     range_of_nums = []
     if -1 < num_of_iterations < 4:
@@ -35,7 +36,7 @@ def level_of_dif(num_of_iterations):
 
 
 def generate_grid(range_of_nums: List[int], num_type: str) -> List[int]:
-    '''
+    """
     This function generates the game grid, which consist of 10 numbers.
 
     Args : range_of_nums: a list of two ints, which represent the level of difficulty,
@@ -46,7 +47,7 @@ def generate_grid(range_of_nums: List[int], num_type: str) -> List[int]:
     Returns: a list of 10 positive ints, which represents the game grid.
 
     Args are given by the other functions, therefore no exceptions should be rose.
-    '''
+    """
 
     right_num = randint(range_of_nums[0], range_of_nums[1])
 
@@ -58,6 +59,5 @@ def generate_grid(range_of_nums: List[int], num_type: str) -> List[int]:
     grid = sample(range_of_generation, 9)
     grid.append(right_num)
     shuffle(grid)
-
 
     return grid

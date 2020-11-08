@@ -1,19 +1,20 @@
-'''
+"""
 This module contains main function (one iteration of game)
-and ascript to run the game
-'''
+and a script to run the game
+"""
 
 import D_bug_generate_grid
 import D_bug_interaction_with_player
 from D_bug_number_type import user_number_type as check_type
 
+
 def one_iteration(num_of_lives: int, num_of_iterations: int) -> bool:
-    '''
+    """
     Implements one iteration of the game (one guess of the user)
 
     This function assembles all the modules necessary for the game
     and combines them in main to run the game
-    '''
+    """
 
     if num_of_iterations[0] == 9:
         D_bug_interaction_with_player.victory_output()
@@ -40,7 +41,6 @@ def one_iteration(num_of_lives: int, num_of_iterations: int) -> bool:
             if num_of_lives[0] <= 0:
                 return False
         return True
-
     return False
 
 
