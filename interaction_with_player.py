@@ -1,10 +1,12 @@
-"""
-module that contains functions to interact with user
-"""
+'''
+Module that contains functions to interact with user.
 
-import random
-import time
+It contains functions that print out into, information about
+the state of game, loss or win.
+'''
 
+from random import choice
+from time import sleep
 
 def start_intro():
     '''
@@ -12,28 +14,28 @@ def start_intro():
     '''
 
     print("-" * 123)
-    time.sleep(1)
-    print("""You are about to pass a test that decides their fate.
+    sleep(1)
+    print('''You are about to pass a test that decides their fate.
 The essence of this test is to select people to the highest class of society, \
 where they will have unlimited opportunities.
 Those who fail this test have no chance to change \
-its result and are doomed to a mundane and gray life.""")
-    time.sleep(1)
+its result and are doomed to a mundane and gray life.''')
+    sleep(1)
     print('-'*123)
-    time.sleep(1)
+    sleep(1)
     print('Prepare to start.')
-    time.sleep(1)
+    sleep(1)
     print('.'*123)
-    time.sleep(1)
+    sleep(1)
     print('Try your best.')
-    time.sleep(1)
+    sleep(1)
     print('-'*123)
-    time.sleep(1)
+    sleep(1)
 
 
 def user_num() -> int:
     '''
-    Receives the input from user until it's a positive int number
+    Tries to receive the input from user until it's a positive int number
     '''
 
     user_number = -1
@@ -47,14 +49,17 @@ def user_num() -> int:
 
     return user_number
 
+
 def form_num() -> str:
     '''
-    Randomly chooses the type of number user will look for
+    Randomly chooses the type of number user will look for.
+    It can be 'ulam', 'prime' or 'lucky'.
     '''
 
     number_types = ['ulam', 'prime', 'lucky']
-    num_type = random.choice(number_types)
+    num_type = choice(number_types)
     print(f'Please, choose the {num_type} number from the following:')
+
     return num_type
 
 def congrats_output():
@@ -62,30 +67,33 @@ def congrats_output():
     Prints congratulations if the answer is right
     '''
     dif_congrats = ['Correct!','Exactly!','Right!']
-    out = random.choice(dif_congrats)
-    print(out)
 
+    print(choice(dif_congrats))
 
 
 def mistake_output(num_of_lives):
     '''
-    Prints message that player makes a mistake if he did and number of remaining number of lives
+    Prints message that player makes a mistake
+    if he did and number of remaining number of lives
     '''
 
     dif_mistakes = ['Not right!','Wrong!','Incorrect!']
-    out = random.choice(dif_mistakes)
+    out = choice(dif_mistakes)
     print(out)
     if num_of_lives[0] > 1:
         print(f'U have {num_of_lives[0]} attempts left ')
     elif num_of_lives[0] == 0:
-        time.sleep(1)
+        sleep(1)
         print('-'*123)
         print('You lost and your future won\'t be good........')
     elif num_of_lives[0] == 1:
         print(f'U have {num_of_lives[0]} attempt left')
-        
-def victory_output(num_of_iterations):
-    """
-    Prints victory message when player passed all 9 tests and returns False to stop the game
-    """
-    print("Congratulations, you passed the test! Now your life will be filled with happiness")
+
+def victory_output():
+    '''
+    Prints victory message when player passed
+    all 9 tests and returns False to stop the game
+    '''
+
+    print('Congratulations, you passed the test! \
+Now your life will be filled with happiness')
