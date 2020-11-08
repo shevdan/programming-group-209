@@ -1,17 +1,14 @@
+'''
+This module is designed to execute all the calculations
+with numbers and operate with classes of numbers such as
+prime, ulam and lucky numbers
+'''
+
 import random
 
-'''
-'''
-# IMPORTANT: do not forget about thoughtful documentation
-#
-#
-# TODO: documentation, everyone should look through the code,
-# and propose some improvements.
-
-
-
 def user_number_type(number: int, number_type: str) -> bool:
-    ''' Just in case we will need to determine what
+    ''' 
+    Just in case we will need to determine what
     type of number is inputed.
     '''
 
@@ -30,16 +27,23 @@ def user_number_type(number: int, number_type: str) -> bool:
 
 def lucky_type(number: int) -> bool:
     '''
-
+    This function checks if the number is lucky
+    >>> lucky_type(99)
+    True
+    >>> lucky_type(98)
+    False
+    >>> lucky_type(1)
+    True
+    >>> lucky_type(0)
+    False
+    >>> lucky_type(-1)
+    False
     '''
 
     if number in sieve_flavius(number + 1):
         return True
     return False
 
-'''
-This program generates a list of Flavius sieve numbers
-'''
 def sieve_flavius(number: int) -> list:
     '''
     Function generates list similar to Erathosphen sieve
@@ -63,9 +67,19 @@ def sieve_flavius(number: int) -> list:
         id_list += 1
     return flavius_list
 
-def prime_number(number: int) -> str:
+def prime_number(number: int) -> bool:
     '''
-
+    This function checks if the number is prime
+    >>> prime_number(2)
+    True
+    >>> prime_number(11)
+    True
+    >>> prime_number(10)
+    False
+    >>> prime_number(0)
+    False
+    >>> prime_number(-1)
+    False
     '''
     if number in sieve_eratosthene(number + 1):
         return True
@@ -119,6 +133,15 @@ def sieve_eratosthene(number: int) -> list:
 
 def ulam_number(number: int) -> bool:
     '''
+    This function checks if the number is ulam
+    >>> ulam_number(-1)
+    False
+    >>> ulam_number(0)
+    False
+    >>> ulam_number(1)
+    True
+    >>> ulam_number(8)
+    True
     '''
     if number in numbers_Ulam(number + 1):
         return True
