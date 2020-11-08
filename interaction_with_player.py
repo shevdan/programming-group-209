@@ -8,7 +8,7 @@ the state of game, loss or win.
 from random import choice
 from time import sleep
 
-def start_intro():
+def start_intro() -> str:
     '''
     Prints out the intro of the game.
     '''
@@ -62,7 +62,7 @@ def form_num() -> str:
 
     return num_type
 
-def congrats_output():
+def congrats_output() -> str:
     '''
     Prints congratulations if the answer is right
     '''
@@ -71,7 +71,7 @@ def congrats_output():
     print(choice(dif_congrats))
 
 
-def mistake_output(num_of_lives):
+def mistake_output(num_of_lives: int) -> str:
     '''
     Prints message that player makes a mistake
     if he did and number of remaining number of lives
@@ -89,7 +89,7 @@ def mistake_output(num_of_lives):
     elif num_of_lives[0] == 1:
         print(f'U have {num_of_lives[0]} attempt left')
 
-def victory_output():
+def victory_output() -> str:
     '''
     Prints victory message when player passed
     all 9 tests and returns False to stop the game
