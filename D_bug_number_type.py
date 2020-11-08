@@ -7,8 +7,21 @@ prime, ulam and lucky numbers
 
 def user_number_type(number: int, number_type: str) -> bool:
     """
+    (int, str) -> bool
     Just in case we will need to determine what
     type of number is inputed.
+    >>> user_number_type(3, "lucky")
+    True
+    >>> user_number_type(3, "luckyy")
+    False
+    >>> user_number_type(17, "Prime")
+    True
+    >>> user_number_type(18, "Prime")
+    False
+    >>> user_number_type(26, "ulam")
+    True
+    >>> user_number_type(27, "ulam")
+    False
     """
     if number_type in ['lucky', 'Lucky']:
         if lucky_type(number):
@@ -24,7 +37,9 @@ def user_number_type(number: int, number_type: str) -> bool:
 
 def lucky_type(number: int) -> bool:
     """
+    (number) -> bool
     This function checks if the number is lucky
+
     >>> lucky_type(99)
     True
     >>> lucky_type(98)
@@ -43,6 +58,7 @@ def lucky_type(number: int) -> bool:
 
 def sieve_flavius(number: int) -> list:
     """
+    (number) -> list
     Function generates list similar to Erathosphen sieve
     for building lucky numbers sequence
 
@@ -72,6 +88,7 @@ def prime_number(number: int) -> bool:
     """
     (number) -> bool
     This function checks if the number is prime
+
     >>> prime_number(2)
     True
     >>> prime_number(11)

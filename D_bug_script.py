@@ -28,7 +28,7 @@ def one_iteration(num_of_lives: int, num_of_iterations: int) -> bool:
         num_of_user = D_bug_interaction_with_player.user_num()
     except EOFError:
         print('You lost... You were so close...')
-        return None
+        return False
 
     if num_of_user:
         if check_type(num_of_user, type_of_num) and num_of_user in grid:

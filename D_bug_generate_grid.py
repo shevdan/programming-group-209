@@ -22,6 +22,15 @@ def level_of_dif(num_of_iterations):
     0 - 3 iterations : easy level of game: range of numbers [0, 20]
     4 - 6 iterations : medium level of game: range of numbers [20, 50]
     7 - 9 iterations : hard level of game: range of numbers [50, 100]
+
+    >>> level_of_dif(0)
+    [10, 20]
+    >>> level_of_dif(4)
+    [20, 50]
+    >>> level_of_dif(6)
+    [20, 50]
+    >>> level_of_dif(9)
+    [50, 100]
     """
 
     range_of_nums = []
