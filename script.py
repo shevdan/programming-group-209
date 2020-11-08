@@ -1,22 +1,22 @@
 '''
 This module contains main function (one iteration of game)
-and a script to run the game
+and ascript to run the game
 '''
 
 import generate_grid
-import number_type
 import interaction_with_player
-from random import choice
 from number_type import user_number_type as check_type
 
-def one_iteration(num_of_lives, num_of_iterations):
+def one_iteration(num_of_lives: int, num_of_iterations: int) -> bool:
     '''
     Implements one iteration of the game (one guess of the user)
+
     This function assembles all the modules necessary for the game
     and combines them in main to run the game
     '''
+
     if num_of_iterations[0] == 9:
-        print(interaction_with_player.victory_output())
+        interaction_with_player.victory_output()
         return False
 
     range_of_nums = generate_grid.level_of_dif(num_of_iterations[0])
@@ -36,16 +36,16 @@ def one_iteration(num_of_lives, num_of_iterations):
             if num_of_lives[0] <= 0:
                 return False
         return True
-    
+
     return False
 
 
 if __name__ == '__main__':
 
     interaction_with_player.start_intro()
-    num_of_lives = [3]
-    num_of_iterations = [0]
+    num_of_lives_in_game = [3]
+    num_of_iterations_of_game = [0]
 
     while True:
-        if not one_iteration(num_of_lives, num_of_iterations):
+        if not one_iteration(num_of_lives_in_game, num_of_iterations_of_game):
             break
