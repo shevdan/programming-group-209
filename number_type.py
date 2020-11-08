@@ -4,15 +4,11 @@ with numbers and operate with classes of numbers such as
 prime, ulam and lucky numbers
 '''
 
-import random
-
 def user_number_type(number: int, number_type: str) -> bool:
-    ''' 
+    '''
     Just in case we will need to determine what
     type of number is inputed.
     '''
-
-    # TODO: what if a number can be both prime and lucky, for instance?
 
     if number_type in ['lucky', 'Lucky']:
         if lucky_type(number):
@@ -21,9 +17,11 @@ def user_number_type(number: int, number_type: str) -> bool:
         if prime_number(number):
             return True
     if number_type in ['ulam', 'Ulam']:
-        if ulam_number:
+        if ulam_number(number):
             return True
+
     return False
+
 
 def lucky_type(number: int) -> bool:
     '''
@@ -42,12 +40,15 @@ def lucky_type(number: int) -> bool:
 
     if number in sieve_flavius(number + 1):
         return True
+
     return False
+
 
 def sieve_flavius(number: int) -> list:
     '''
     Function generates list similar to Erathosphen sieve
     for building lucky numbers sequence
+
     >>> sieve_flavius(100)
     [1, 3, 7, 9, 13, 15, 21, 25, 31, 33, 37, 43, 49, 51, 63, 67, 69, 73, 75, 79, 87, 93, 99]
     >>> sieve_flavius(10)
@@ -55,8 +56,10 @@ def sieve_flavius(number: int) -> list:
     >>> sieve_flavius(0)
     []
     '''
+
     flavius_list = list(range(1, number + 1, 2))
     id_list = 1
+
     while id_list < len(flavius_list):
         temporary_list = []
         num = flavius_list[id_list]
@@ -65,6 +68,8 @@ def sieve_flavius(number: int) -> list:
                 temporary_list.append(item)
         flavius_list = temporary_list
         id_list += 1
+
+
     return flavius_list
 
 def prime_number(number: int) -> bool:
@@ -83,7 +88,9 @@ def prime_number(number: int) -> bool:
     '''
     if number in sieve_eratosthene(number + 1):
         return True
+
     return False
+
 
 def sieve_eratosthene(number: int) -> list:
     '''
@@ -115,9 +122,9 @@ def sieve_eratosthene(number: int) -> list:
     curr_num = 2
 
     #Start loop beginning from 2, as 0 and 1 are not prime
-    #The loop goes up to sqrt(number) to decrease the number 
+    #The loop goes up to sqrt(number) to decrease the number
     #of iterations and improve the time of work
-    while(curr_num * curr_num < number):
+    while curr_num * curr_num < number:
         if prime[curr_num]:
             #if current number is prime, update all the
             #following numbers that are multiplied by curr_num
@@ -134,6 +141,7 @@ def sieve_eratosthene(number: int) -> list:
 def ulam_number(number: int) -> bool:
     '''
     This function checks if the number is ulam
+
     >>> ulam_number(-1)
     False
     >>> ulam_number(0)
@@ -143,14 +151,16 @@ def ulam_number(number: int) -> bool:
     >>> ulam_number(8)
     True
     '''
-    if number in numbers_Ulam(number + 1):
+
+    if number in ulam_numbers(number + 1):
         return True
     return False
 
 
-def numbers_Ulam(number: int) -> list:
+def ulam_numbers(number: int) -> list:
     """
     This fucntion returns list of n Ulam numbers
+
     >>> numbers_Ulam(10)
     [1, 2, 3, 4, 6, 8, 11, 13, 16, 18]
     >>> numbers_Ulam(2)
@@ -158,6 +168,7 @@ def numbers_Ulam(number: int) -> list:
     >>> numbers_Ulam(1)
     [1]
     """
+
     ulam = []
     if number >= 1:
         ulam.append(1)
@@ -166,8 +177,9 @@ def numbers_Ulam(number: int) -> list:
     if number > 2:
         ulam_num = 3
         while len(ulam) < number:
+            length = len(ulam)
             coincidence = 0
-            for i in range(len(ulam)):
+            for i in range(length):
                 for j in range(i + 1, len(ulam)):
                     if (ulam[i] + ulam[j]) == ulam_num:
                         coincidence += 1
